@@ -22,14 +22,14 @@ function RJSFWrapper(props) {
     //.. temporarily ignoring till handler is attached successfully
   } = props;
   const { notify } = useNotification();
-const errorHandler = (err: unknown, prefixMessage: string) => {
-  const message = err instanceof Error ? err.message : String(err);
-  notify({
-    message: `${prefixMessage}: ${message}`,
-    event_type: EVENT_TYPES.ERROR,
-    details: String(err),
-  });
-};
+  const errorHandler = (err: unknown, prefixMessage: string) => {
+    const message = err instanceof Error ? err.message : String(err);
+    notify({
+      message: `${prefixMessage}: ${message}`,
+      event_type: EVENT_TYPES.ERROR,
+      details: String(err),
+    });
+  };
 
   const [data, setData] = React.useState((prev) => ({ ...formData, ...prev }));
   const [schema, setSchema] = React.useState({ rjsfSchema: {}, uiSchema: {} });
